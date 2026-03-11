@@ -22,10 +22,11 @@ config.read("config.ini")
 api_id   = config['Telegram']['api_id']
 api_hash = config['Telegram']['api_hash']
 username = config['Telegram']['username']
-
+# proxy_key = config['Telegram']['prox']
+#
 # proxy = (proxy_server, proxy_port, proxy_key)
 
-client = TelegramClient(username, api_id, api_hash,)
+client = TelegramClient(username, api_id, api_hash)
 
 client.start()
 
