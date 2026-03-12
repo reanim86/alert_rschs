@@ -84,7 +84,6 @@ def comprassion(tg, json_file):
     while n != 0:
         n -= 1
         if tg[n]['id'] > json_file[0]['id']:
-            print(tg[n]['text'])
             res = tg[n]['text']
     return res
 
@@ -95,6 +94,8 @@ def alarm(text):
     :return: уведомление
     """
     if 'Ракетная опасность' in text:
+        return 'Ракетная опасность'
+    if 'В укрытия' in text:
         return 'Ракетная опасность'
     if 'Отбой ракетной опасности' in text:
         return 'Отбой ракетной опасности'
