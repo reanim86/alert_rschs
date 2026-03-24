@@ -79,7 +79,7 @@ def comprassion(tg, json_file):
     :param json_file: сохраненные ранее сообщения
     :return: сообщение о РО
     """
-    n = 5
+    n = 15
     res = 'none'
     while n != 0:
         n -= 1
@@ -97,6 +97,8 @@ def alarm(text):
         return 'Ракетная опасность'
     if 'В укрытия' in text:
         return 'Ракетная опасность'
+    if 'Авиационная опасность' in text:
+        return 'Ракетная опасность'
     if 'Отбой ракетной опасности' in text:
         return 'Отбой ракетной опасности'
     return
@@ -104,7 +106,7 @@ def alarm(text):
 
 async def main():
     exporter = ChannelExporter(API_ID, API_HASH, PHONE_NUMBER)
-    res_tg = await exporter.export_to_json(CHANNEL_USERNAME, limit=5)
+    res_tg = await exporter.export_to_json(CHANNEL_USERNAME, limit=15)
     json = import_json()
     tg_msg = comprassion(res_tg, json)
     print(alarm(tg_msg))
