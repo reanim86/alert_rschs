@@ -1,5 +1,5 @@
 import asyncio
-from telethon import TelegramClient
+from telethon import TelegramClient, connection
 import csv
 import json
 from datetime import datetime
@@ -19,7 +19,10 @@ class ChannelExporter:
         self.api_id = api_id
         self.api_hash = api_hash
         self.phone_number = phone_number
-        self.client = TelegramClient('export_session', api_id, api_hash)
+        self.client = TelegramClient(
+            'export_session', api_id, api_hash, connection=connection.ConnectionTcpMTProxyRandomizedIntermediate,
+            proxy=('win.sosproxy.space', 443, 'ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d')
+        )
 
     async def export_to_json(self, channel_username, limit=1000,
                              filename=f'{datetime.now().strftime("%Y-%m-%d-%H-%m")}.json'):
